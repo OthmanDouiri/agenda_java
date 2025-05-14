@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda Room Schedule</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .tabs { margin-bottom: 1em; }
+        .tab-button {
+            background: #eee;
+            border: 1px solid #ccc;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            margin-right: 0.5em;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab-button.active { background: #fff; border-bottom: 1px solid #fff; }
+        .tab-content { display: none; border: 1px solid #ccc; padding: 1em; border-radius: 0 5px 5px 5px; }
+        .tab-content.active { display: block; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+        th, td { border: 1px solid #ccc; padding: 0.3em 0.5em; text-align: center; }
+        th { background: #f5f5f5; }
+        .conflicts { color: #b00; margin-bottom: 1em; }
+        .free { background: #e8ffe8; }
+        .closed { background: #eee; color: #888; }
+        .activity { background: #d0e6ff; }
+    </style>
+</head>
+<body>
+    <h1>Agenda Room Schedule</h1>
+
+    <!-- Conflict Display -->
+    <div th:if="${agendaViewModel.conflicts != null and !agendaViewModel.conflicts.isEmpty()}" class="conflicts">
+        <h3>Conflicts / Warnings</h3>
+        <ul>
+            <li th:each="conflict : ${agendaViewModel.conflicts}" th:text="${conflict}"></li>
+        </ul>
+    </div>
+
+    <!-- Tabs for Rooms -->
+    <div class="tabs">
+        <button th:each="room,iterStat : ${agendaViewModel.roomSchedules.keySet()}"
+                th:text="${room}"
+                th:classappend="${iterStat.index == 0} ? 'active' : ''"
+                class="tab-button"
+                th:attr="onclick=|showTab('${room}')|"></button>
+    </div>
+
+    <!-- Room Schedules -->
+    <div th:each="room,iterStat : ${agendaViewModel.roomSchedules.keySet()}">
+        <div th:id="'tab-'+${room}"
+             th:class="'tab-content' + (${iterStat.index == 0} ? ' active' : '')">
+            <h2 th:text="${room}"></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th th:each="hour : ${#numbers.sequence(8,20)}" th:text="${hour} + ':00'"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="week : ${agendaViewModel.roomSchedules[room]}">
+                        <td colspan="100" style="background:#f0f0f0; font-weight:bold;" th:text="'Week of ' + ${week.startDate}"></td>
+                    </tr>
+                    <tr th:each="day : ${week.days}">
+                        <td th:text="${day.dateDisplay}"></td>
+                        <td th:text="${day.dayOfWeek}"></td>
+                        <td th:each="hour : ${#numbers.sequence(8,20)}"
+                            th:with="activity=${day.getActivityForHour(hour)}"
+                            th:text="${activity}"
+                            th:classappend="${activity == 'free'} ? 'free' : (activity == 'Closed') ? 'closed' : 'activity'"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showTab(room) {
+            var tabs = document.getElementsByClassName('tab-content');
+            var buttons = document.getElementsByClassName('tab-button');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+                buttons[i].classList.remove('active');
+            }
+            document.getElementById('tab-' + room).classList.add('active');
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].textContent === room) {
+                    buttons[i].classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

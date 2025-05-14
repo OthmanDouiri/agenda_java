@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .error-message {
+            color: #e74c3c;
+            padding: 10px;
+            background-color: #fadbd8;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .description {
+            margin-bottom: 30px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        .sample-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f7ff;
+            border-radius: 3px;
+            border: 1px solid #b8daff;
+        }
+        .sample-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0c5460;
+        }
+        .sample-content {
+            font-family: monospace;
+            background-color: #e9f5ff;
+            padding: 10px;
+            border-radius: 3px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Space Booking Agenda Generator</h1>
+    
+    <div class="description">
+        <p>This application generates a visual agenda based on space bookings. Upload configuration and booking request files to create your agenda.</p>
+    </div>
+    
+    <div th:if="${error}" class="error-message" th:text="${error}"></div>
+    
+    <div class="form-container">
+        <form action="/procesar" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="configFile">Configuration File (config.txt):</label>
+                <input type="file" id="configFile" name="configFile" required>
+                <small>Format: First line: YEAR MONTH, Second line: SOURCE_LANG TARGET_LANG</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="peticionesFile">Booking Requests (peticiones.txt):</label>
+                <input type="file" id="peticionesFile" name="peticionesFile" required>
+                <small>Format: ActivityName Room StartDate EndDate DayPattern TimePattern</small>
+            </div>
+            
+            <button type="submit">Generate Agenda</button>
+        </form>
+    </div>
+    
+    <div class="sample-container">
+        <div class="sample-title">Sample config.txt:</div>
+        <div class="sample-content">2023 11
+ESP ENG</div>
+        
+        <div class="sample-title">Sample peticiones.txt:</div>
+        <div class="sample-content">ReunioJava Sala1 01/11/2023 20/11/2023 LMCJVSG 08-10_19-21
+WorkshopSQL Sala2 05/11/2023 15/11/2023 LMCJV 14-16</div>
+        
+        <div class="sample-title">Day Pattern Format:</div>
+        <div class="sample-content">L = Monday (Lunes)
+M = Tuesday (Martes)
+C = Wednesday (Miércoles)
+J = Thursday (Jueves)
+V = Friday (Viernes)
+S = Saturday (Sábado)
+G = Sunday (Domingo)</div>
+        
+        <div class="sample-title">Time Pattern Format:</div>
+        <div class="sample-content">HH-HH = Single time range (e.g., 08-10 means 8:00 to 10:00)
+HH-HH_HH-HH = Multiple time ranges separated by underscore
+All times must be in 24-hour format (00-24)</div>
+    </div>
+</body>
+</html> 

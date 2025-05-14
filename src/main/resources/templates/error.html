@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Space Booking Agenda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #e74c3c;
+            text-align: center;
+        }
+        .error-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .error-message {
+            color: #e74c3c;
+            padding: 10px;
+            background-color: #fadbd8;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+        .stack-trace {
+            font-family: monospace;
+            font-size: 12px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Error</h1>
+    
+    <div class="error-container">
+        <div class="error-message">
+            <p th:text="${errorMessage != null ? errorMessage : 'An error occurred while processing your request. Please check your input files and try again.'}">
+                An error occurred processing your request.
+            </p>
+        </div>
+        
+        <div th:if="${stackTrace != null && !stackTrace.isEmpty()}">
+            <h3>Technical Details:</h3>
+            <div class="stack-trace" th:text="${stackTrace}">Stack trace will be displayed here</div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="/upload" class="button">Return to Upload Page</a>
+        </div>
+    </div>
+</body>
+</html> 

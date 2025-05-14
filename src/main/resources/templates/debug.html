@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug File Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Debug File Upload</h1>
+        
+        <form id="debugForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="configFile">Config File:</label>
+                <input type="file" id="configFile" name="configFile" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="peticionesFile">Peticiones File:</label>
+                <input type="file" id="peticionesFile" name="peticionesFile" required>
+            </div>
+            
+            <button type="submit">Debug Upload</button>
+        </form>
+        
+        <div id="response" class="response" style="display:none;">
+            <h2>Debug Response:</h2>
+            <pre id="responseContent"></pre>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('debugForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            fetch('/debug/files', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseContent').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('response').style.display = 'block';
+            })
+            .catch(error => {
+                document.getElementById('responseContent').textContent = 'Error: ' + error;
+                document.getElementById('response').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html> 

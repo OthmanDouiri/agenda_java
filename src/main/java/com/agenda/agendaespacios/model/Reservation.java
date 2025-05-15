@@ -186,4 +186,14 @@ public class Reservation {
             return startHour + "-" + endHour;
         }
     }
+
+    public void setValid(boolean b) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setValid'");
+    }
+
+    public void setErrorMessage(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setErrorMessage'");
+    }
 } 

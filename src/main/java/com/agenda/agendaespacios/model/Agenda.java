@@ -5,6 +5,7 @@ import java.time.YearMonth;
 import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.events.Event;
 
 public class Agenda {
     private static final Logger logger = LoggerFactory.getLogger(Agenda.class);
@@ -54,5 +55,15 @@ public class Agenda {
     
     public List<String> getConflicts() {
         return conflicts;
+    }
+
+    public void addEvent(Event event) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addEvent'");
+    }
+
+    public List<Event> getEvents() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEvents'");
     }
 }

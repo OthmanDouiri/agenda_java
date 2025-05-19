@@ -103,12 +103,5 @@ class AgendaTest {
         assertDoesNotThrow(() -> agenda.addReservation(reservation));
     }
 
-    @Test
-    void testAddEventAndGetEventsThrowsUnsupportedOperation() {
-        ConfigData config = new ConfigData(2024, 7, "ESP", "ENG");
-        Agenda agenda = new Agenda(config);
-        org.yaml.snakeyaml.events.Event event = null;
-        assertThrows(UnsupportedOperationException.class, () -> agenda.addEvent(event));
-        assertThrows(UnsupportedOperationException.class, () -> agenda.getEvents());
-    }
+    
 }

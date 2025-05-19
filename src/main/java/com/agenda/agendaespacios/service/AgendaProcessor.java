@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class AgendaProcessor {
+    
     private static final Logger logger = LoggerFactory.getLogger(AgendaProcessor.class);
     
     /**
@@ -94,4 +95,4 @@ public class AgendaProcessor {
         // Add the reservation to the agenda
         agenda.addReservation(processedReservation);
     }
-}
+} 

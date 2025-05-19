@@ -1,96 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Agenda Room Schedule</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{app.title}">Space Booking Agenda</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .tabs { margin-bottom: 1em; }
-        .tab-button {
-            background: #eee;
-            border: 1px solid #ccc;
-            padding: 0.5em 1em;
-            cursor: pointer;
-            margin-right: 0.5em;
-            border-radius: 5px 5px 0 0;
+        body {
+            font-family: Verdana, sans-serif;
+            font-size: 10pt;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .tab-button.active { background: #fff; border-bottom: 1px solid #fff; }
-        .tab-content { display: none; border: 1px solid #ccc; padding: 1em; border-radius: 0 5px 5px 5px; }
-        .tab-content.active { display: block; }
-        table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
-        th, td { border: 1px solid #ccc; padding: 0.3em 0.5em; text-align: center; }
-        th { background: #f5f5f5; }
-        .conflicts { color: #b00; margin-bottom: 1em; }
-        .free { background: #e8ffe8; }
-        .closed { background: #eee; color: #888; }
-        .activity { background: #d0e6ff; }
+        h1, h2 {
+            text-align: center;
+        }
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+        td {
+            padding: 2px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .header {
+            background-color: #D6E7FA;
+        }
+        .subheader {
+            background-color: #E8F1FE;
+        }
+        .time-column {
+            background-color: #E8F1FE;
+            font-size: 10pt;
+            text-align: center;
+        }
+        .free {
+            background-color: #DFFAC4;
+        }
+        .occupied {
+            background-color: #fbfccf;
+        }
+        .closed {
+            background-color: #b2aaaa;
+        }
+        .conflicts {
+            margin: 20px auto;
+            width: 90%;
+            padding: 10px;
+            background-color: #FFEBEE;
+            border: 1px solid #FFCDD2;
+            border-radius: 4px;
+        }
+        .room-title {
+            margin-top: 30px;
+        }
+        .tab-container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .legend {
+            margin: 20px auto;
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .no-rooms {
+            text-align: center;
+            margin: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin: 20px;
+            padding: 15px;
+            background-color: #FFEBEE;
+            border-radius: 4px;
+        }
+        .debug-info {
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+            padding: 5px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
     </style>
-</head>
-<body>
-    <h1>Agenda Room Schedule</h1>
-
-    <!-- Conflict Display -->
-    <div th:if="${agendaViewModel.conflicts != null and !agendaViewModel.conflicts.isEmpty()}" class="conflicts">
-        <h3>Conflicts / Warnings</h3>
-        <ul>
-            <li th:each="conflict : ${agendaViewModel.conflicts}" th:text="${conflict}"></li>
-        </ul>
-    </div>
-
-    <!-- Tabs for Rooms -->
-    <div class="tabs">
-        <button th:each="room,iterStat : ${agendaViewModel.roomSchedules.keySet()}"
-                th:text="${room}"
-                th:classappend="${iterStat.index == 0} ? 'active' : ''"
-                class="tab-button"
-                th:attr="onclick=|showTab('${room}')|"></button>
-    </div>
-
-    <!-- Room Schedules -->
-    <div th:each="room,iterStat : ${agendaViewModel.roomSchedules.keySet()}">
-        <div th:id="'tab-'+${room}"
-             th:class="'tab-content' + (${iterStat.index == 0} ? ' active' : '')">
-            <h2 th:text="${room}"></h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Day</th>
-                        <th th:each="hour : ${#numbers.sequence(8,20)}" th:text="${hour} + ':00'"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="week : ${agendaViewModel.roomSchedules[room]}">
-                        <td colspan="100" style="background:#f0f0f0; font-weight:bold;" th:text="'Week of ' + ${week.startDate}"></td>
-                    </tr>
-                    <tr th:each="day : ${week.days}">
-                        <td th:text="${day.dateDisplay}"></td>
-                        <td th:text="${day.dayOfWeek}"></td>
-                        <td th:each="hour : ${#numbers.sequence(8,20)}"
-                            th:with="activity=${day.getActivityForHour(hour)}"
-                            th:text="${activity}"
-                            th:classappend="${activity == 'free'} ? 'free' : (activity == 'Closed') ? 'closed' : 'activity'"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
     <script>
-        function showTab(room) {
-            var tabs = document.getElementsByClassName('tab-content');
-            var buttons = document.getElementsByClassName('tab-button');
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active');
-                buttons[i].classList.remove('active');
+        function openRoom(evt, roomName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
             }
-            document.getElementById('tab-' + room).classList.add('active');
-            for (var i = 0; i < buttons.length; i++) {
-                if (buttons[i].textContent === room) {
-                    buttons[i].classList.add('active');
-                }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(roomName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        window.onload = function() {
+            // Set up click handlers for room tabs
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].addEventListener('click', function(event) {
+                    var roomName = this.getAttribute('data-room');
+                    if (roomName) {
+                        openRoom(event, roomName);
+                    }
+                });
+            }
+            
+            // Open the first tab by default if it exists
+            if (tablinks.length > 0) {
+                tablinks[0].click();
             }
         }
     </script>
+</head>
+<body>
+    <h1 th:text="#{app.title}">Space Booking Agenda</h1>
+    
+    <!-- Debug info - remove in production -->
+    <div class="debug-info">
+        <span>Locale: </span>
+        <span th:text="${#locale}">en</span>
+        <span> | Target Language: </span>
+        <span th:text="${targetLanguage}">ENG</span>
+        <span> | Free Text: </span>
+        <span th:text="#{app.legend.free}">Free</span>
+    </div>
+    
+    <!-- Configuration info -->
+    <div th:if="${agendaViewModel != null and agendaViewModel.config != null}">
+        <h2>
+            <span th:text="#{app.month}">Month:</span>
+            <span th:text="${agendaViewModel.config.month + '/' + agendaViewModel.config.year}">11/2024</span>
+        </h2>
+    </div>
+    <div th:unless="${agendaViewModel != null and agendaViewModel.config != null}" class="error">
+        <p th:text="#{app.error.config}">Error: Configuration data not available.</p>
+    </div>
+    
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color free"></div>
+            <span th:text="#{app.legend.free}">Free</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color occupied"></div>
+            <span th:text="#{app.legend.occupied}">Occupied</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color closed"></div>
+            <span th:text="#{app.legend.closed}">Closed</span>
+        </div>
+    </div>
+
+    <!-- Error handling if agendaViewModel is null -->
+    <div th:if="${agendaViewModel == null}" class="error">
+        <p th:text="#{app.error.agenda}">Error: No agenda data available. Please check your input files and try again.</p>
+        <p><a href="/upload" th:text="#{app.return}">Return to upload page</a></p>
+    </div>
+    
+    <!-- Display only if agendaViewModel is available -->
+    <div th:if="${agendaViewModel != null}">
+        <!-- Display a message if no rooms are scheduled -->
+        <div th:if="${agendaViewModel.roomSchedules == null || agendaViewModel.roomSchedules.isEmpty()}" class="no-rooms">
+            <p th:text="#{app.no.rooms}">No room schedules were created for the selected month. Check your booking requests file.</p>
+        </div>
+        
+        <!-- Tabs for each room (only shown if there are rooms) -->
+        <div class="tab-container" th:if="${agendaViewModel.roomSchedules != null && !agendaViewModel.roomSchedules.isEmpty()}">
+            <div class="tab">
+                <th:block th:each="roomEntry : ${agendaViewModel.roomSchedules}">
+                    <button class="tablinks" th:if="${roomEntry.key != null}" 
+                            th:attr="data-room=${roomEntry.key}" 
+                            th:text="${#messages.msgOrNull('room.' + roomEntry.key) != null ? #messages.msg('room.' + roomEntry.key) : roomEntry.key}">Room</button>
+                </th:block>
+                <button class="tablinks" data-room="conflicts" th:text="#{app.conflicts}">Conflicts</button>
+            </div>
+            
+            <!-- Room schedules -->
+            <th:block th:each="roomEntry : ${agendaViewModel.roomSchedules}" th:if="${roomEntry.key != null}">
+                <div th:id="${roomEntry.key}" class="tabcontent">
+                    <h2 class="room-title" th:text="${#messages.msgOrNull('room.' + roomEntry.key) != null ? #messages.msg('room.' + roomEntry.key) : roomEntry.key}">Room Name</h2>
+                    
+                    <th:block th:if="${roomEntry.value != null}" th:each="weekSchedule, weekStat : ${roomEntry.value}">
+                        <p th:if="${weekStat.index > 0}">&nbsp;</p>
+                        
+                        <table th:if="${weekSchedule != null && weekSchedule.days != null}" 
+                               border="1" cellpadding="2" cellspacing="0">
+                            <tr class="header">
+                                <td>
+                                    <span th:text="#{app.week}">Week</span>
+                                    <span th:text="${' ' + weekStat.count}">1</span>
+                                </td>
+                                <td th:each="day : ${weekSchedule.days}" 
+                                    th:if="${day != null}">
+                                    <!-- Display day name based on value -->
+                                    <span th:if="${day.dayOfWeek == 'Monday'}" th:text="#{day.monday}">Monday</span>
+                                    <span th:if="${day.dayOfWeek == 'Tuesday'}" th:text="#{day.tuesday}">Tuesday</span>
+                                    <span th:if="${day.dayOfWeek == 'Wednesday'}" th:text="#{day.wednesday}">Wednesday</span>
+                                    <span th:if="${day.dayOfWeek == 'Thursday'}" th:text="#{day.thursday}">Thursday</span>
+                                    <span th:if="${day.dayOfWeek == 'Friday'}" th:text="#{day.friday}">Friday</span>
+                                    <span th:if="${day.dayOfWeek == 'Saturday'}" th:text="#{day.saturday}">Saturday</span>
+                                    <span th:if="${day.dayOfWeek == 'Sunday'}" th:text="#{day.sunday}">Sunday</span>
+                                    <span th:if="${day.dayOfWeek == null}">-</span>
+                                </td>
+                            </tr>
+                            <tr class="subheader">
+                                <td th:text="#{app.date}">Date</td>
+                                <td th:each="day : ${weekSchedule.days}" 
+                                    th:if="${day != null}"
+                                    th:text="${day.dateDisplay != null ? day.dateDisplay : '-'}">Date</td>
+                            </tr>
+                            
+                            <!-- Time slots -->
+                            <tr th:each="hour : ${#numbers.sequence(0, 23)}">
+                                <td class="time-column" th:text="${hour + '-' + (hour+1)}">Hour</td>
+                                
+                                <td th:each="day : ${weekSchedule.days}" 
+                                    th:if="${day != null}">
+                                    
+                                    <!-- Handle case when getActivityForHour might throw an exception -->
+                                    <th:block th:with="activity=${day.getActivityForHour(hour)}">
+                                        <span th:class="${activity == 'free' ? 'free' : (activity == 'Closed' ? 'closed' : 'occupied')}">
+                                            <th:block th:if="${activity == 'free'}" th:text="#{app.legend.free}">Free</th:block>
+                                            <th:block th:if="${activity == 'Closed'}" th:text="#{app.legend.closed}">Closed</th:block>
+                                            <th:block th:if="${activity != 'free' && activity != 'Closed'}" th:text="${activity}">Activity</th:block>
+                                            <th:block th:if="${activity == null}" th:text="#{app.legend.free}">Free</th:block>
+                                        </span>
+                                    </th:block>
+                                </td>
+                            </tr>
+                        </table>
+                    </th:block>
+                </div>
+            </th:block>
+            
+            <!-- Conflicts tab -->
+            <div id="conflicts" class="tabcontent">
+                <h2 th:text="#{app.conflicts}">Booking Conflicts</h2>
+                <div th:if="${agendaViewModel.conflicts == null || agendaViewModel.conflicts.isEmpty()}">
+                    <p th:text="#{app.no.conflicts}">No conflicts detected.</p>
+                </div>
+                <div th:unless="${agendaViewModel.conflicts == null || agendaViewModel.conflicts.isEmpty()}" class="conflicts">
+                    <ul>
+                        <li th:each="conflict : ${agendaViewModel.conflicts}" 
+                            th:if="${conflict != null}">
+                            <!-- Try to translate room names in conflict messages -->
+                            <th:block th:with="conflictText=${conflict}">
+                                <span th:utext="${#strings.replace(#strings.replace(conflictText, 'Sala1', #messages.msg('room.Sala1')), 'Sala2', #messages.msg('room.Sala2'))}">Conflict</span>
+                            </th:block>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <p style="text-align: center; margin-top: 30px;">
+        <a href="/upload" th:text="#{app.upload.new}">Upload New Files</a>
+    </p>
 </body>
-</html>
+</html> 

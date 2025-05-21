@@ -191,26 +191,11 @@ public class Agenda {
                 return '-';
             }
             
-            // Check if pattern is in Spanish/Catalan format (LMCJVSG) or English format (MTWTFSS)
-            boolean isSpanishFormat = dayPattern.contains("L") || dayPattern.contains("C") || 
-                                     dayPattern.contains("J") || dayPattern.contains("G");
-            
-            // Map day index (0-6) to the correct character position
-            char dayCode = '-';
-            if (isSpanishFormat) {
-                // Spanish/Catalan: LMCJVSG (Monday to Sunday)
-                String daysPattern = "LMCJVSG";
-                if (dayIndex < daysPattern.length()) {
-                    dayCode = daysPattern.charAt(dayIndex);
-                    return dayPattern.indexOf(dayCode) >= 0 ? dayCode : '-';
-                }
-            } else {
-                // English: MTWTFSS (Monday to Sunday)
-                String daysPattern = "MTWTFSS";
-                if (dayIndex < daysPattern.length()) {
-                    dayCode = daysPattern.charAt(dayIndex);
-                    return dayPattern.indexOf(dayCode) >= 0 ? dayCode : '-';
-                }
+            // Always use Spanish format (LMCJVSG) for day codes
+            String daysPattern = "LMCJVSG";
+            if (dayIndex < daysPattern.length()) {
+                char dayCode = daysPattern.charAt(dayIndex);
+                return dayPattern.indexOf(dayCode) >= 0 ? dayCode : '-';
             }
             
             return '-';

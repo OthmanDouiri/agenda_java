@@ -4,6 +4,7 @@ import com.agenda.agendaespacios.model.ConfigData;
 import com.agenda.agendaespacios.model.Reservation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DataLoader {
 
     private static final Logger logger = LoggerFactory.getLogger(DataLoader.class);

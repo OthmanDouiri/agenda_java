@@ -1,0 +1,147 @@
+2025-05-21 17:22:23 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:22:23 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:22:23 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-21 17:22:23 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-21 17:22:24 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:22:25 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:22:25 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:22:25 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:22:25 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:22:25 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1619 ms
+2025-05-21 17:22:25 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:22:26 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:22:26 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:22:26 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 3.153 seconds (process running for 3.813)
+2025-05-21 17:23:00 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-21 17:23:00 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-21 17:23:00 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-05-21 17:23:11 INFO  c.a.a.controller.AgendaController - Processing files: config=config.txt, peticiones=peticiones.txt
+2025-05-21 17:23:11 INFO  c.a.a.controller.AgendaController - Loaded config: year=2024, month=11, languages=CAT_ENG
+2025-05-21 17:23:11 INFO  c.a.a.controller.AgendaController - Set locale to: en
+2025-05-21 17:23:11 INFO  c.a.a.controller.AgendaController - Loaded 6 reservation requests
+2025-05-21 17:23:11 WARN  c.agenda.agendaespacios.model.Agenda - Conflicts detected for reservation Presentacio in room Sala1
+2025-05-21 17:23:11 INFO  c.a.a.controller.AgendaController - Created agenda with 2 room schedules and 2 conflicts
+2025-05-21 17:24:11 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 16 class path changes (0 additions, 0 deletions, 16 modifications)
+2025-05-21 17:24:11 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21 17:24:11 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-21 17:24:11 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:24:11 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:24:12 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:24:12 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:24:12 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:24:12 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:24:12 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:24:12 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 493 ms
+2025-05-21 17:24:12 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:24:12 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:24:12 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:24:12 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 0.701 seconds (process running for 110.014)
+2025-05-21 17:24:12 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-21 17:24:28 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-05-21 17:24:28 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21 17:24:28 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-21 17:24:28 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:24:28 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:24:28 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:24:28 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:24:28 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:24:28 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:24:28 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:24:28 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 301 ms
+2025-05-21 17:24:28 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:24:28 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:24:28 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:24:28 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 0.47 seconds (process running for 126.349)
+2025-05-21 17:24:28 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-21 17:28:59 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-05-21 17:28:59 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21 17:28:59 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-21 17:28:59 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:28:59 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:28:59 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:28:59 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:28:59 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:28:59 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:28:59 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:28:59 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 367 ms
+2025-05-21 17:28:59 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:28:59 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:28:59 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:28:59 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 0.538 seconds (process running for 397.556)
+2025-05-21 17:28:59 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-21 17:29:14 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2025-05-21 17:29:14 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21 17:29:14 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-21 17:29:14 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:29:14 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:29:15 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:29:15 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:29:15 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:29:15 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:29:15 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:29:15 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 337 ms
+2025-05-21 17:29:15 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:29:15 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:29:15 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:29:15 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 0.515 seconds (process running for 412.972)
+2025-05-21 17:29:15 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-21 17:29:24 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2025-05-21 17:29:24 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21 17:29:24 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-21 17:29:25 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:29:25 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:29:25 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:29:25 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:29:25 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:29:25 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:29:25 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:29:25 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 302 ms
+2025-05-21 17:29:25 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:29:25 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:29:25 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:29:25 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 0.479 seconds (process running for 423.213)
+2025-05-21 17:29:25 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-21 17:31:12 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-05-21 17:31:12 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21 17:31:12 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-21 17:31:12 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:31:12 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:31:12 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:31:12 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:31:12 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:31:12 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:31:12 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:31:12 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 285 ms
+2025-05-21 17:31:12 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:31:12 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:31:12 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:31:13 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 0.464 seconds (process running for 530.748)
+2025-05-21 17:31:13 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-21 17:31:32 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-21 17:31:32 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-21 17:31:32 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-05-21 17:33:01 INFO  c.a.a.controller.AgendaController - Processing files: config=config.txt, peticiones=peticiones.txt
+2025-05-21 17:33:01 INFO  c.a.a.controller.AgendaController - Loaded config: year=2024, month=11, languages=CAT_ENG
+2025-05-21 17:33:01 INFO  c.a.a.controller.AgendaController - Set locale to: en
+2025-05-21 17:33:01 INFO  c.a.a.controller.AgendaController - Loaded 6 reservation requests
+2025-05-21 17:33:01 WARN  c.agenda.agendaespacios.model.Agenda - Conflicts detected for reservation Presentacio in room Sala1
+2025-05-21 17:33:01 INFO  c.a.a.controller.AgendaController - Created agenda with 2 room schedules and 2 conflicts
+2025-05-21 17:34:07 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 5 class path changes (0 additions, 0 deletions, 5 modifications)
+2025-05-21 17:34:07 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-21 17:34:07 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-21 17:34:07 INFO  c.a.a.AgendaespaciosApplication - Starting AgendaespaciosApplication using Java 21.0.4 with PID 2812 (C:\Users\Ashraf\Desktop\pj\agenda_java\target\classes started by Ashraf in C:\Users\Ashraf\Desktop\pj\agenda_java)
+2025-05-21 17:34:07 INFO  c.a.a.AgendaespaciosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-21 17:34:08 INFO  c.a.a.config.MessageSourceConfig - Configured MessageSource with basenames: classpath:messages
+2025-05-21 17:34:08 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-21 17:34:08 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-21 17:34:08 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-21 17:34:08 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-21 17:34:08 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 373 ms
+2025-05-21 17:34:08 INFO  c.a.a.config.MessageSourceConfig - Configured LocaleResolver with default locale: en
+2025-05-21 17:34:08 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-05-21 17:34:08 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-21 17:34:08 INFO  c.a.a.AgendaespaciosApplication - Started AgendaespaciosApplication in 0.605 seconds (process running for 706.034)
+2025-05-21 17:34:08 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-05-21 17:34:11 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-21 17:34:11 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-21 17:34:11 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms

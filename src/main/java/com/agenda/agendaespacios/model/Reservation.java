@@ -70,17 +70,15 @@ public class Reservation {
     }
     
     /**
-     * Validates if the day pattern contains valid characters from any supported language day patterns
+     * Validates if the day pattern contains valid characters from Spanish day pattern (LMCJVSG)
      */
     private void validateDayPattern(String pattern) {
         for (char c : pattern.toCharArray()) {
-            // Check if the character is valid in any supported format
-            if (SPANISH_CAT_DAY_PATTERN.indexOf(c) == -1 && 
-                ENGLISH_DAY_PATTERN.indexOf(c) == -1 && 
-                FRENCH_DAY_PATTERN.indexOf(c) == -1) {
+            // Check if the character is valid in Spanish format only
+            if (SPANISH_CAT_DAY_PATTERN.indexOf(c) == -1) {
                 this.errorMessage = (this.errorMessage != null ? this.errorMessage + "; " : "") + 
                             "Invalid day in pattern: " + c + ". Must be one of: " + 
-                            SPANISH_CAT_DAY_PATTERN + " or " + ENGLISH_DAY_PATTERN + " or " + FRENCH_DAY_PATTERN;
+                            SPANISH_CAT_DAY_PATTERN;
                 break;
             }
         }
